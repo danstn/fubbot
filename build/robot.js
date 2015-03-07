@@ -11,6 +11,10 @@ function Robot(position, facing) {
   this.facing = null;
 };
 
+var a = function () {
+  return 5;
+};
+
 function place(grid, position, facing) {};
 function move(grid) {};
 function turn(grid, direction) {};
