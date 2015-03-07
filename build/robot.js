@@ -1,21 +1,39 @@
 "use strict";
 
-function Grid(width, height, robot) {
-  this.width = width;
-  this.height = height;
-  this.robot = robot;
+function Grid(w, h, r) {
+  var _this = this;
+
+  this.w = w;
+  this.h = h;
+  this.r = r;
+  this.clone = function (options) {
+    var w = options.w || _this.w;
+    var h = options.h || _this.h;
+    var r = options.r || _this.r;
+    return new Grid(w, h, r);
+  };
 }
 
-function Robot(position, facing) {
-  this.position = null;
-  this.facing = null;
+function Robot(pos, dir) {
+  this.pos = pos;
+  this.dir = dir;
 };
 
-var a = function () {
-  return 5;
+function Position(x, y) {
+  this.x = x;
+  this.y = y;
 };
 
-function place(grid, position, facing) {};
+/* Commands */
+
+function place(grid, pos, dir) {
+  return grid.clone({
+    r: new Robot(pos, dir)
+  });
+};
+
 function move(grid) {};
-function turn(grid, direction) {};
+
+function turn(grid, dir) {};
+
 function report(grid) {};

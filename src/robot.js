@@ -1,18 +1,42 @@
-function Grid(width, height, robot) {
-  this.width = width;
-  this.height = height;
-  this.robot = robot;
+function Grid(w, h, r) {
+  this.w = w;
+  this.h = h;
+  this.r = r;
+  this.clone = (options) => {
+    var w = options.w || this.w;
+    var h = options.h || this.h;
+    var r = options.r || this.r;
+    return new Grid(w, h, r);
+  }
 }
 
-function Robot(position, facing) {
-  this.position = null;
-  this.facing = null;
+function Robot(pos, dir) {
+  this.pos = pos;
+  this.dir = dir;
 };
 
-var a = () => { return 5; };
+function Position(x, y) {
+  this.x = x;
+  this.y = y;
+};
 
-function place(grid, position, facing) {};
-function move(grid) {};
-function turn(grid, direction) {};
-function report(grid) {};
+/* Commands */
+
+function place(grid, pos, dir) {
+  return grid.clone({
+    r: new Robot(pos, dir)
+  });
+};
+
+function move(grid) {
+
+};
+
+function turn(grid, dir) {
+
+};
+
+function report(grid) {
+
+};
 
