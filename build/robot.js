@@ -20,8 +20,24 @@ function Robot(pos, facing) {
 };
 
 function Position(x, y) {
+  var _this = this;
+
   this.x = x;
   this.y = y;
+  this.next = function (facing) {
+    switch (facing) {
+      case 0:
+        return new Position(_this.x, _this.y + 1);
+      case 1:
+        return new Position(_this.x + 1, _this.y);
+      case 2:
+        return new Position(_this.x, _this.y - 1);
+      case 3:
+        return new Position(_this.x - 1, _this.y);
+      default:
+        return _this;
+    }
+  };
 };
 
 /* Commands */
@@ -41,7 +57,16 @@ function place(grid, pos, facing) {
   }
 }
 
-function move(grid) {}
+function move(grid) {
+  var newPos = grid.r.pos.next(grid.r.facing);
+  if (isValid(grid, newPos)) {
+    return grid.clone({
+      r: new Robot(newPos, grid.r.facing)
+    });
+  } else {
+    return grid;
+  }
+}
 
 function turn(grid, dir) {
   var shift = dir == -1 ? 3 : dir == 1 ? 1 : null;

@@ -18,6 +18,15 @@ function Robot(pos, facing) {
 function Position(x, y) {
   this.x = x;
   this.y = y;
+  this.next = (facing) => {
+    switch (facing) {
+      case 0: return new Position(this.x, this.y + 1);
+      case 1: return new Position(this.x + 1, this.y);
+      case 2: return new Position(this.x, this.y - 1);
+      case 3: return new Position(this.x - 1, this.y);
+      default: return this;
+    }
+  }
 };
 
 /* Commands */
@@ -41,7 +50,14 @@ function place(grid, pos, facing) {
 }
 
 function move(grid) {
-
+  var newPos = grid.r.pos.next(grid.r.facing);
+  if (isValid(grid, newPos)) {
+    return grid.clone({
+      r: new Robot(newPos, grid.r.facing)
+    });
+  } else {
+    return grid;
+  }
 }
 
 function turn(grid, dir) {
