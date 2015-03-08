@@ -23,7 +23,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['babel']);
+  grunt.registerTask('default', ['babel', 'karma']);
+  grunt.registerTask('package', ['babel']);
   grunt.registerTask('test', ['karma']);
 };
 

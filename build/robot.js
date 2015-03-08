@@ -14,9 +14,9 @@ function Grid(w, h, r) {
   };
 }
 
-function Robot(pos, dir) {
+function Robot(pos, facing) {
   this.pos = pos;
-  this.dir = dir;
+  this.facing = facing;
 };
 
 function Position(x, y) {
@@ -27,22 +27,31 @@ function Position(x, y) {
 /* Commands */
 
 function isValid(grid, pos) {
-  return;
-  pos.x < grid.w && pos.x >= 0 && (pos.y < grid.h && pos.y >= 0);
+  return pos.x < grid.w && pos.x >= 0 && (pos.y < grid.h && pos.y >= 0);
 }
 
-function place(grid, pos, dir) {
+function place(grid, pos, facing) {
   if (isValid(grid, pos)) {
     return grid.clone({
-      r: new Robot(pos, dir)
+      r: new Robot(pos, facing)
     });
   } else {
+    console.log("--> Invalid position");
     return grid;
   }
 }
 
 function move(grid) {}
 
-function turn(grid, dir) {}
+function turn(grid, dir) {
+  var shift = dir == -1 ? 3 : dir == 1 ? 1 : null;
+  if (shift === null) {
+    return grid;
+  } else {
+    return grid.clone({
+      r: new Robot(grid.r.pos, (shift + grid.r.facing) % 4)
+    });
+  }
+}
 
 function report(grid) {}
