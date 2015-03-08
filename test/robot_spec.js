@@ -1,7 +1,7 @@
-describe('robot', function() {
+describe('robot', () => {
 
-  describe('#place', function() {
-    xit('places a robot on a grid given a position', function() {
-    });
+  it('is alive!', () => {
+    expect(true).toBe(true);
   });
+
 });

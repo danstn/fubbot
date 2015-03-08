@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
     'babel': {
       dist: {
         files: [{
@@ -11,20 +12,18 @@ module.exports = function(grunt) {
         }]
       }
     },
-    jasmine: {
-      src: 'build/**/*.js',
-      options: {
-        specs: 'test/**/*_spec.js',
-        helpers: 'test/helpers/*_helper.js'
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('default', ['babel']);
-  grunt.registerTask('package', ['babel']);
-  grunt.registerTask('test', ['package', 'jasmine']);
+  grunt.registerTask('test', ['karma']);
 };
 
