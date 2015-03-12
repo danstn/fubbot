@@ -1,33 +1,39 @@
-function Grid(w, h, r) {
-  this.w = w;
-  this.h = h;
-  this.r = r;
-  this.clone = (options) => {
-    var w = options.w || this.w;
-    var h = options.h || this.h;
-    var r = options.r || this.r;
-    return new Grid(w, h, r);
+class Grid {
+  constructor(w,h,r) {
+    this.w = w;
+    this.h = h;
+    this.r = r;
+    this.clone = (options) => {
+      var w = options.w || this.w;
+      var h = options.h || this.h;
+      var r = options.r || this.r;
+      return new Grid(w, h, r);
+    }
   }
 }
 
-function Robot(pos, facing) {
-  this.pos = pos;
-  this.facing = facing;
-};
+class Robot {
+  constructor(pos, facing) {
+    this.pos = pos;
+    this.facing = facing;
+  }
+}
 
-function Position(x, y) {
-  this.x = x;
-  this.y = y;
-  this.next = (facing) => {
-    switch (facing) {
-      case 0: return new Position(this.x, this.y + 1);
-      case 1: return new Position(this.x + 1, this.y);
-      case 2: return new Position(this.x, this.y - 1);
-      case 3: return new Position(this.x - 1, this.y);
-      default: return this;
+class Position {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.next = (facing) => {
+      switch (facing) {
+        case 0: return new Position(this.x, this.y + 1);
+        case 1: return new Position(this.x + 1, this.y);
+        case 2: return new Position(this.x, this.y - 1);
+        case 3: return new Position(this.x - 1, this.y);
+        default: return this;
+      }
     }
   }
-};
+}
 
 /* Commands */
 
