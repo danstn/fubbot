@@ -24,7 +24,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('default', ['babel', 'karma']);
-  grunt.registerTask('package', ['babel']);
+  grunt.registerTask('build', ['babel']);
   grunt.registerTask('test', ['karma']);
 };
 
