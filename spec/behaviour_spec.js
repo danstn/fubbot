@@ -1,3 +1,7 @@
+var Robot = require('../src/robot');
+var Grid = require('../src/grid');
+var Position = require('../src/position');
+var B = require('../src/behaviour');
 describe('robot', () => {
 
   var subject, expected;
@@ -16,7 +20,7 @@ describe('robot', () => {
       position = new Position(2, 2);
       robot    = new Robot(position, 0);
       grid     = new Grid(5, 5, robot);
-      subject = place(grid, position, 0);
+      subject = B.place(grid, position, 0);
     });
 
     it('places a robot at a new position facing a new direction', () => {

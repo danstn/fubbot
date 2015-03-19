@@ -14,21 +14,14 @@ module.exports = function(grunt) {
             "ext": ".js"
         }]
       }
-    },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js'
-      }
     }
   });
 
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['babel', 'karma']);
+  grunt.registerTask('default', ['babel']);
   grunt.registerTask('build', ['babel']);
-  grunt.registerTask('test', ['karma']);
 
   grunt.registerTask('specs', function() {
     require('babel/register')();
