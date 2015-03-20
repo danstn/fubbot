@@ -1,15 +1,16 @@
-var Robot = require('../src/robot');
-var Grid = require('../src/grid');
-var Position = require('../src/position');
-var B = require('../src/behaviour');
+var Robot = require('robot');
+var Grid = require('grid');
+var Position = require('position');
+var B = require('behaviour');
+
 describe('robot', () => {
 
   var subject, expected;
   var position, robot, grid;
 
-  function _s(o) {
-    return JSON.stringify(o);
-  };
+  function expectToEqual(a, b) {
+    expect(JSON.stringify(a)).toEqual(JSON.stringify(b));
+  }
 
   it('is alive!', () => {
     expect(true).toBe(true);
@@ -25,7 +26,7 @@ describe('robot', () => {
 
     it('places a robot at a new position facing a new direction', () => {
       expected = new Grid(5, 5, new Robot(new Position(2, 2), 0));
-      expect(_s(subject)).toEqual(_s(expected));
+      expectToEqual(subject, expected);
     });
   });
 

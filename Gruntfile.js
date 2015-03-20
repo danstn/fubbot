@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     var Jasmine = require('./node_modules/jasmine/lib/jasmine.js');
     var jasmine = new Jasmine();
 
-    process.env.NODE_PATH = process.env.NODE_PATH + ":" + __dirname + '/test';
+    process.env.NODE_PATH = process.env.NODE_PATH + ":" + __dirname + '/spec';
     require('module').Module._initPaths();
 
     jasmine.loadConfigFile(process.env.JASMINE_CONFIG_PATH);
